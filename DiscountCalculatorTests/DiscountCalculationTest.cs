@@ -24,11 +24,16 @@ namespace DiscountCalculatorTests
                 ProductType = ProductType.Default
             });
 
+            discountRateRepository.Setup(repo => repo.GetByProductType(It.Is<ProductType>(a => a == ProductType.Default))).Returns(10);
+            discountRateRepository.Setup(repo => repo.GetByProductType(It.Is<ProductType>(a => a == ProductType.BusinessDress))).Returns(5);
+            discountRateRepository.Setup(repo => repo.GetByProductType(It.Is<ProductType>(a => a == ProductType.ChildrenClothes))).Returns(10);
+            discountRateRepository.Setup(repo => repo.GetByProductType(It.Is<ProductType>(a => a == ProductType.Other))).Returns(0);
+
             var roleRepository = new Mock<IRoleRepository>();
             roleRepository.Setup(repo => repo.IsInRole(1, "Admin")).Returns(true);
             roleRepository.Setup(repo => repo.IsInRole(2, "Admin")).Returns(false);
-
-            _discountCalculatorService = new DiscountCalculatorService();
+            
+            _discountCalculatorService = new DiscountCalculatorService(discountRateRepository.Object);
             _discountService = new DiscountRateService(discountRateRepository.Object, roleRepository.Object);
         }
 
