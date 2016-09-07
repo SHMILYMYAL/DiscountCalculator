@@ -17,5 +17,11 @@ namespace DiscountCalculator.Repository.Implements
             // Get Query Discount Rate 
             throw new NotImplementedException();
         }
+
+        public double GetByProductType(ProductType productType)
+        {
+            // Get Query Discount Rate By Product Type
+            throw new NotImplementedException();
+        }
     }
 }

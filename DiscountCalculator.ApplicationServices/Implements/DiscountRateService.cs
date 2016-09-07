@@ -27,5 +27,10 @@ namespace DiscountCalculator.ApplicationServices.Implements
         {
             return _discountRateRepository.Get();
         }
+
+        public double GetDiscountRateByProductType(ProductType productType)
+        {
+            return _discountRateRepository.GetByProductType(productType);
+        }
     }
 }

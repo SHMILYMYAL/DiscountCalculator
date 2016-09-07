@@ -7,10 +7,10 @@ namespace DiscountCalculator.ApplicationServices.Implements
     {
         const double DiscountRate = 10;
 
-        public Amount GetAmount(double grossAmount, bool isCashier, ProductType productType)
+        public Amount GetAmount(double grossAmount, ProductType productType, bool isCashier)
         {
-            //var rate = GetDiscountRateByProductType(productType);
-            // nanti semua tinggal kali rate
+            //var Rate = GetDiscountRateByProductType(productType);
+            // DiscountRate diganti Rate
 
             Amount AmountResults = new Amount();
 

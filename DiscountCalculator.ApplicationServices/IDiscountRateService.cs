@@ -7,5 +7,7 @@ namespace DiscountCalculator.ApplicationServices
         void Edit(DiscountRate model);
 
         DiscountRate GetDiscountRate();
+
+        double GetDiscountRateByProductType(ProductType producType);
     }
 }
