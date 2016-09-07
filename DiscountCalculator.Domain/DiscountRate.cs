@@ -2,8 +2,10 @@
 {
     public class DiscountRate
     {
-        public double Amount { get; set; }
+        public double Rate { get; set; }
 
         public int EditedBy { get; set; }
+
+        public ProductType ProductType { get; set; }
     }
 }
