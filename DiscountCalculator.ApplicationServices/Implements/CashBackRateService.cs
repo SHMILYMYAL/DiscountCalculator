@@ -13,11 +13,6 @@ namespace DiscountCalculator.ApplicationServices.Implements
             _cashBackRateRepository = cashBackRateRepository;
         }
 
-        public double GetCashBackAmountByProductType(double gross, ProductType productType)
-        {
-            throw new NotImplementedException();
-        }
-
         public double GetCashBackRateByProductType(ProductType productType)
         {
             return _cashBackRateRepository.GetByProductType(productType);

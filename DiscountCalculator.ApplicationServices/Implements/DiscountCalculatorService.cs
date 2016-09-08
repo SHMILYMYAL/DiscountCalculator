@@ -17,15 +17,15 @@ namespace DiscountCalculator.ApplicationServices.Implements
         {
             var rate = _discountRateRepository.GetByProductType(productType);
 
-            Amount AmountResults = new Amount();
+            Amount amountResults = new Amount();
 
             var discountAmount = grossAmount * rate / 100;
             var netAmount = grossAmount - discountAmount;
 
-            AmountResults.DiscountAmount = isCashier ? Math.Round(discountAmount, 2) : discountAmount;
-            AmountResults.NetAmount = isCashier ? Math.Round(netAmount, 2) : netAmount;
+            amountResults.DiscountAmount = isCashier ? Math.Round(discountAmount, 2) : discountAmount;
+            amountResults.NetAmount = isCashier ? Math.Round(netAmount, 2) : netAmount;
 
-            return AmountResults;
+            return amountResults;
         }
     }
 }
