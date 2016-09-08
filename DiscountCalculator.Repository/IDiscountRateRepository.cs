@@ -6,6 +6,6 @@ namespace DiscountCalculator.Repository
     {
         void Edit(DiscountRate model);
         DiscountRate Get();
-        double GetByProductType(ProductType producType);
+        double GetByProductType(ProductType productType);
     }
 }

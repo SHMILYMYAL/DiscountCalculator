@@ -15,11 +15,11 @@ namespace DiscountCalculator.ApplicationServices.Implements
 
         public Amount GetAmount(double grossAmount, ProductType productType, bool isCashier)
         {
-            var Rate = _discountRateRepository.GetByProductType(productType);
+            var rate = _discountRateRepository.GetByProductType(productType);
 
             Amount AmountResults = new Amount();
 
-            var discountAmount = grossAmount * Rate / 100;
+            var discountAmount = grossAmount * rate / 100;
             var netAmount = grossAmount - discountAmount;
 
             AmountResults.DiscountAmount = isCashier ? Math.Round(discountAmount, 2) : discountAmount;

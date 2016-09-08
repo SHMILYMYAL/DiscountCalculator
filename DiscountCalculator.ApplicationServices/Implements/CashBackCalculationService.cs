@@ -16,25 +16,25 @@ namespace DiscountCalculator.ApplicationServices.Implements
 
         public double GetCashBackAmountByProductType(double gross, ProductType productType)
         {
-            var Rate = _cashBackRateRepository.GetByProductType(productType);
+            var rate = _cashBackRateRepository.GetByProductType(productType);
 
-            return gross * Rate / 100;
+            return gross * rate / 100;
         }
 
         public double GetTotalCashBackAmount(List<Transaction> transactionList)
         {
-            double CashBackTransactionList = 0;
-            var GroupedTransactionListByProductType = transactionList.GroupBy(t => t.ProductType).Select(grp => grp.ToList());
+            double cashBackTransactionList = 0;
+            var groupedTransactionListByProductType = transactionList.GroupBy(t => t.ProductType).Select(grp => grp.ToList());
 
-            foreach (var transactionData in GroupedTransactionListByProductType)
+            foreach (var transactionData in groupedTransactionListByProductType)
             {
                 if (transactionData.Count > 1)
                 {
-                    CashBackTransactionList += GetCashBackAmountByProductType(transactionData.Sum(items => items.Gross), transactionData.FirstOrDefault().ProductType);
+                    cashBackTransactionList += GetCashBackAmountByProductType(transactionData.Sum(items => items.Gross), transactionData.FirstOrDefault().ProductType);
                 }
             }
 
-            return CashBackTransactionList;
+            return cashBackTransactionList;
         }
     }
 }

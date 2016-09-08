@@ -8,6 +8,6 @@ namespace DiscountCalculator.ApplicationServices
 
         DiscountRate GetDiscountRate();
 
-        double GetDiscountRateByProductType(ProductType producType);
+        double GetDiscountRateByProductType(ProductType productType);
     }
 }

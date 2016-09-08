@@ -28,18 +28,18 @@ namespace DiscountCalculatorTests
         [TestMethod]
         public void GetCashBackRate_ProductType_CashBackRate()
         {
-            var Rate = _cashBackService.GetCashBackRateByProductType(ProductType.BusinessDress);
+            var rate = _cashBackService.GetCashBackRateByProductType(ProductType.BusinessDress);
 
-            Assert.AreEqual(1, Rate);
+            Assert.AreEqual(1, rate);
         }
 
         [TestMethod]
         public void GetCashBackAmount_GrossAmountPerProductTypeProductType_CashBackAmount()
         {
-            var Gross = 350000;
-            var CashBackAmount = _cashBackCalculationService.GetCashBackAmountByProductType(Gross, ProductType.BusinessDress);
+            var gross = 350000;
+            var cashBackAmount = _cashBackCalculationService.GetCashBackAmountByProductType(gross, ProductType.BusinessDress);
 
-            Assert.AreEqual(3500, CashBackAmount);
+            Assert.AreEqual(3500, cashBackAmount);
         }
 
         [TestMethod]
@@ -55,9 +55,9 @@ namespace DiscountCalculatorTests
             TransactionList.Add(new Transaction { Gross = 200000, ProductType = ProductType.ChildrenClothes});
             TransactionList.Add(new Transaction { Gross = 50000, ProductType = ProductType.ChildrenClothes});
 
-            var TotalCashBackAmount = _cashBackCalculationService.GetTotalCashBackAmount(TransactionList);
+            var totalCashBackAmount = _cashBackCalculationService.GetTotalCashBackAmount(TransactionList);
 
-            Assert.AreEqual(7000, TotalCashBackAmount);
+            Assert.AreEqual(7000, totalCashBackAmount);
         }
     }
 }
