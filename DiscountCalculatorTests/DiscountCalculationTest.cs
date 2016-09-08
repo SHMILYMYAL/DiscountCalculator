@@ -26,8 +26,6 @@ namespace DiscountCalculatorTests
 
             discountRateRepository.Setup(repo => repo.GetByProductType(It.Is<ProductType>(a => a == ProductType.Default))).Returns(10);
             discountRateRepository.Setup(repo => repo.GetByProductType(It.Is<ProductType>(a => a == ProductType.BusinessDress))).Returns(5);
-            discountRateRepository.Setup(repo => repo.GetByProductType(It.Is<ProductType>(a => a == ProductType.ChildrenClothes))).Returns(10);
-            discountRateRepository.Setup(repo => repo.GetByProductType(It.Is<ProductType>(a => a == ProductType.Other))).Returns(0);
 
             var roleRepository = new Mock<IRoleRepository>();
             roleRepository.Setup(repo => repo.IsInRole(1, "Admin")).Returns(true);
@@ -41,8 +39,8 @@ namespace DiscountCalculatorTests
         [TestMethod]
         public void GetAmount_GrossAmountWithDefaultDiscountRateAndIsCashier_Amount()
         {
-            var gross = 100000;
-            var Amount = _discountCalculatorService.GetAmount(gross, ProductType.Default, true);
+            var Gross = 100000;
+            var Amount = _discountCalculatorService.GetAmount(Gross, ProductType.Default, true);
 
             Assert.AreEqual(90000, Amount.NetAmount);
             Assert.AreEqual(10000, Amount.DiscountAmount);
@@ -83,8 +81,8 @@ namespace DiscountCalculatorTests
         [TestMethod]
         public void GetAmount_GrossAmountWithDefaultDiscountRateAndIsCashier_AmountRoundedByTwo()
         {
-            var gross = 5.89;
-            var Amount = _discountCalculatorService.GetAmount(gross, ProductType.Default, true);
+            var Gross = 5.89;
+            var Amount = _discountCalculatorService.GetAmount(Gross, ProductType.Default, true);
 
             Assert.AreEqual(5.30, Amount.NetAmount);
             Assert.AreEqual(0.59, Amount.DiscountAmount);
@@ -93,8 +91,8 @@ namespace DiscountCalculatorTests
         [TestMethod]
         public void GetAmount_GrossAmountWithDefaultDiscountRateAndIsNotCashier_AmountNotRoundedByTwo()
         {
-            var gross = 5.89;
-            var Amount = _discountCalculatorService.GetAmount(gross, ProductType.Default, false);
+            var Gross = 5.89;
+            var Amount = _discountCalculatorService.GetAmount(Gross, ProductType.Default, false);
 
             Assert.AreEqual(5.301, Amount.NetAmount);
             Assert.AreEqual(0.589, Amount.DiscountAmount);
@@ -125,8 +123,8 @@ namespace DiscountCalculatorTests
         [TestMethod]
         public void GetAmount_GrossAmountProductTypeAndIsCashier_Amount()
         {
-            var gross = 100000;
-            var Amount = _discountCalculatorService.GetAmount(gross, ProductType.BusinessDress, true);
+            var Gross = 100000;
+            var Amount = _discountCalculatorService.GetAmount(Gross, ProductType.BusinessDress, true);
 
             Assert.AreEqual(95000, Amount.NetAmount);
             Assert.AreEqual(5000, Amount.DiscountAmount);

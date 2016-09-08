@@ -40,8 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICashBackCalculationService.cs" />
+    <Compile Include="ICashBackRateService.cs" />
     <Compile Include="IDiscountCalculatorService.cs" />
     <Compile Include="IDiscountRateService.cs" />
+    <Compile Include="Implements\CashBackCalculationService.cs" />
+    <Compile Include="Implements\CashBackRateService.cs" />
     <Compile Include="Implements\DiscountCalculatorService.cs" />
     <Compile Include="Implements\DiscountRateService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

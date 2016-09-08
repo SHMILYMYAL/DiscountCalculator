@@ -6,7 +6,6 @@ namespace DiscountCalculator.ApplicationServices.Implements
 {
     public class DiscountCalculatorService : IDiscountCalculatorService
     {
-        //const double DiscountRate = 10;
         private IDiscountRateRepository _discountRateRepository;
 
         public DiscountCalculatorService(IDiscountRateRepository discountRateRepository)

@@ -40,7 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICashBackRateRepository.cs" />
     <Compile Include="IDiscountRateRepository.cs" />
+    <Compile Include="Implements\CashBackRateRepository.cs" />
     <Compile Include="Implements\DiscountRateRepository.cs" />
     <Compile Include="Implements\RoleRepository.cs" />
     <Compile Include="IRoleRepository.cs" />
