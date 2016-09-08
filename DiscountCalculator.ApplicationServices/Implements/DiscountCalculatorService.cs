@@ -17,7 +17,7 @@ namespace DiscountCalculator.ApplicationServices.Implements
         {
             var rate = _discountRateRepository.GetByProductType(productType);
 
-            Amount amountResults = new Amount();
+            var amountResults = new Amount();
 
             var discountAmount = grossAmount * rate / 100;
             var netAmount = grossAmount - discountAmount;

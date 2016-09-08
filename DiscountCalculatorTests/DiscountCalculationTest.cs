@@ -92,7 +92,7 @@ namespace DiscountCalculatorTests
         public void GetAmount_GrossAmountWithDefaultDiscountRateAndIsNotCashier_AmountNotRoundedByTwo()
         {
             var gross = 5.89;
-            var amount = _discountCalculatorService.GetAmount(gross, ProductType.Default, false);
+            var amount = _discountCalculatorService.GetAmount(gross, ProductType.Default);
 
             Assert.AreEqual(5.301, amount.NetAmount);
             Assert.AreEqual(0.589, amount.DiscountAmount);

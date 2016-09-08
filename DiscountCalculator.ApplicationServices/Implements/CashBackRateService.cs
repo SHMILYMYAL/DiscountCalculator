@@ -1,5 +1,4 @@
-﻿using System;
-using DiscountCalculator.Domain;
+﻿using DiscountCalculator.Domain;
 using DiscountCalculator.Repository;
 
 namespace DiscountCalculator.ApplicationServices.Implements
