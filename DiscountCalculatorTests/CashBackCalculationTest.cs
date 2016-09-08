@@ -5,7 +5,6 @@ using DiscountCalculator.Repository;
 using Moq;
 using DiscountCalculator.Domain;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace DiscountCalculatorTests
 {
@@ -20,7 +19,7 @@ namespace DiscountCalculatorTests
         {
             var cashBackRateRepository = new Mock<ICashBackRateRepository>();           
             cashBackRateRepository.Setup(repo => repo.GetByProductType(It.Is<ProductType>(a => a == ProductType.BusinessDress))).Returns(1);
-            cashBackRateRepository.Setup(repo => repo.GetByProductType(It.Is<ProductType>(a => a == ProductType.ChildrenClothes))).Returns(2);
+            cashBackRateRepository.Setup(repo => repo.GetByProductType(It.Is<ProductType>(a => a == ProductType.ChildrenClothes))).Returns(1);
 
             _cashBackService = new CashBackRateService(cashBackRateRepository.Object);
             _cashBackCalculationService = new CashBackCalculationService(cashBackRateRepository.Object);
@@ -48,17 +47,17 @@ namespace DiscountCalculatorTests
         {
             List <Transaction> TransactionList = new List<Transaction>();
 
-            TransactionList.Add(new Transaction { Gross = 100000, ProductType = ProductType.BusinessDress, Quantity = 1 });
-            TransactionList.Add(new Transaction { Gross = 200000, ProductType = ProductType.BusinessDress, Quantity = 1 });
-            TransactionList.Add(new Transaction { Gross = 50000, ProductType = ProductType.BusinessDress, Quantity = 1 });
+            TransactionList.Add(new Transaction { Gross = 100000, ProductType = ProductType.BusinessDress });
+            TransactionList.Add(new Transaction { Gross = 200000, ProductType = ProductType.BusinessDress});
+            TransactionList.Add(new Transaction { Gross = 50000, ProductType = ProductType.BusinessDress});
 
-            TransactionList.Add(new Transaction { Gross = 100000, ProductType = ProductType.ChildrenClothes, Quantity = 1 });
-            TransactionList.Add(new Transaction { Gross = 200000, ProductType = ProductType.ChildrenClothes, Quantity = 1 });
-            TransactionList.Add(new Transaction { Gross = 300000, ProductType = ProductType.ChildrenClothes, Quantity = 1 });
+            TransactionList.Add(new Transaction { Gross = 100000, ProductType = ProductType.ChildrenClothes});
+            TransactionList.Add(new Transaction { Gross = 200000, ProductType = ProductType.ChildrenClothes});
+            TransactionList.Add(new Transaction { Gross = 50000, ProductType = ProductType.ChildrenClothes});
 
             var TotalCashBackAmount = _cashBackCalculationService.GetTotalCashBackAmount(TransactionList);
 
-            Assert.AreEqual(35000, TotalCashBackAmount.Where(x => x.ProductType == ProductType.BusinessDress).FirstOrDefault().CashBackAmount);
+            Assert.AreEqual(7000, TotalCashBackAmount);
         }
     }
 }

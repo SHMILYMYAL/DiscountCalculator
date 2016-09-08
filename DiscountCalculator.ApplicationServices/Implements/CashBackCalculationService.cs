@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using DiscountCalculator.Domain;
 using DiscountCalculator.Repository;
 using System.Linq;
@@ -22,21 +21,16 @@ namespace DiscountCalculator.ApplicationServices.Implements
             return gross * Rate / 100;
         }
 
-        public List<CashBackTransaction> GetTotalCashBackAmount(List<Transaction> transactionList)
+        public double GetTotalCashBackAmount(List<Transaction> transactionList)
         {
-            List<CashBackTransaction> CashBackTransactionList = new List<CashBackTransaction>();
+            double CashBackTransactionList = 0;
             var GroupedTransactionListByProductType = transactionList.GroupBy(t => t.ProductType).Select(grp => grp.ToList());
 
             foreach (var transactionData in GroupedTransactionListByProductType)
             {
                 if (transactionData.Count > 1)
                 {
-                    CashBackTransactionList.Add(
-                        new CashBackTransaction
-                        {
-                            CashBackAmount = GetCashBackAmountByProductType(transactionData.Sum(items => items.Gross), transactionData.FirstOrDefault().ProductType),
-                            ProductType = transactionData.FirstOrDefault().ProductType
-                        });
+                    CashBackTransactionList += GetCashBackAmountByProductType(transactionData.Sum(items => items.Gross), transactionData.FirstOrDefault().ProductType);
                 }
             }
 

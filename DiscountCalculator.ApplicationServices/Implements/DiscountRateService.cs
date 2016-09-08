@@ -1,7 +1,7 @@
 ﻿using System;
 using DiscountCalculator.Domain;
 using DiscountCalculator.Repository;
-using DiscountCalculator.Repository.Implements;
+
 namespace DiscountCalculator.ApplicationServices.Implements
 {
     public class DiscountRateService : IDiscountRateService

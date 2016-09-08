@@ -1,5 +1,6 @@
 ﻿using DiscountCalculator.Domain;
 using System;
+
 namespace DiscountCalculator.Repository.Implements
 {
     public class DiscountRateRepository : IDiscountRateRepository

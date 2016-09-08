@@ -7,6 +7,6 @@ namespace DiscountCalculator.ApplicationServices
     {
         double GetCashBackAmountByProductType(double gross, ProductType productType);
 
-        List<CashBackTransaction> GetTotalCashBackAmount(List<Transaction> transactionList);
+        double GetTotalCashBackAmount(List<Transaction> transactionList);
     }
 }
